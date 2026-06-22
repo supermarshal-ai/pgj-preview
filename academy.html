@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>アカデミー画面イメージ — Hashimoto Putting Academy</title>
+<style>
+  :root{
+    --cream:#ffffff; --cream-200:#f6f5f3; --cream-300:#ececea; --line:#e3ded2;
+    --ink:#0a0a0a; --soft:#4f575e; --muted:#8a8a88;
+    --bronze:#5e4d35; --gold:#9b7934; --navy:#16283a; --navy-2:#1c2e40; --champagne:#d5c6a0;
+    --green:#4f7a52;
+    --sans:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans","Yu Gothic",sans-serif;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,"Times New Roman",serif;
+    --mono:ui-monospace,Menlo,Monaco,"SF Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream-200);color:var(--ink);font-family:var(--sans);font-size:15px;
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-feature-settings:"palt"}
+  .disclaimer{background:var(--navy);color:var(--champagne);font-family:var(--mono);font-size:11px;
+    letter-spacing:.05em;text-align:center;padding:7px 14px}
+  /* shell */
+  .shell{display:flex;min-height:calc(100vh - 30px)}
+  /* sidebar */
+  .side{width:300px;flex:0 0 300px;background:var(--navy);color:#fff;display:flex;flex-direction:column;
+    position:sticky;top:0;height:calc(100vh - 30px);overflow-y:auto}
+  .side .brand{padding:22px 22px 18px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .side .brand b{display:block;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+  .side .brand b span{color:var(--champagne)}
+  .side .brand small{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.5);text-transform:uppercase}
+  .prog{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .prog .bar{height:5px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+  .prog .bar i{display:block;height:100%;background:var(--champagne);transition:width .4s ease}
+  .prog .lab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.06em;
+    color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:8px}
+  .ov-link{display:block;padding:13px 22px;font-size:13px;color:rgba(255,255,255,.85);cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.08);letter-spacing:.02em}
+  .ov-link:hover{background:rgba(255,255,255,.05)}
+  .mods{flex:1;padding:8px 0}
+  .mod>.mh{display:flex;align-items:center;gap:10px;padding:12px 22px;cursor:pointer}
+  .mod>.mh:hover{background:rgba(255,255,255,.05)}
+  .mod .wkn{font-family:var(--mono);font-size:10px;color:var(--champagne);letter-spacing:.06em;flex:0 0 auto}
+  .mod .mt{font-size:13px;flex:1;color:#fff;line-height:1.35}
+  .mod .chev{font-size:10px;color:rgba(255,255,255,.45);transition:transform .2s}
+  .mod.open .chev{transform:rotate(90deg)}
+  .lessons{display:none;padding:2px 0 8px}
+  .mod.open .lessons{display:block}
+  .lz{display:flex;align-items:center;gap:11px;padding:9px 22px 9px 44px;cursor:pointer;font-size:12.5px;color:rgba(255,255,255,.7)}
+  .lz:hover{background:rgba(255,255,255,.05);color:#fff}
+  .lz.active{background:rgba(213,198,160,.14);color:#fff;box-shadow:inset 3px 0 0 var(--champagne)}
+  .lz .ck{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:9px}
+  .lz.done .ck{background:var(--champagne);border-color:var(--champagne);color:var(--navy)}
+  .lz .ld{margin-left:auto;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4)}
+  .side .foot{padding:16px 22px;border-top:1px solid rgba(255,255,255,.1)}
+  .owntag{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--champagne)}
+  .owntag::before{content:"✓ ";}
+  .upg{display:block;margin-top:10px;text-align:center;background:var(--champagne);color:var(--navy);font-weight:700;
+    font-size:12px;padding:10px;border-radius:128px;cursor:pointer;letter-spacing:.03em}
+  /* main */
+  .main{flex:1;min-width:0}
+  .topbar{display:none;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
+  .topbar b{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  .burger{background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+  .pane{padding:34px clamp(20px,4vw,52px) 80px;max-width:920px}
+  /* overview hero */
+  .hero{position:relative;background:var(--navy-2);border-radius:14px;overflow:hidden;color:#fff;padding:44px 40px;margin-bottom:26px}
+  .hero svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+  .hero .hc{position:relative}
+  .hero .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--champagne)}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4vw,40px);margin:12px 0 12px;line-height:1.2}
+  .hero p{margin:0 0 22px;color:rgba(255,255,255,.78);max-width:520px;font-size:15px}
+  .hero .play{display:inline-flex;align-items:center;gap:10px;background:var(--champagne);color:var(--navy);
+    border:none;border-radius:128px;padding:12px 26px;font-weight:700;font-size:13.5px;cursor:pointer;letter-spacing:.03em}
+  .stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:26px}
+  .stats div{}
+  .stats .n{font-family:var(--serif);font-size:24px;color:#fff}
+  .stats .l{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.55);text-transform:uppercase}
+  .sect{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:32px 0 14px}
+  .mcards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:620px){.mcards{grid-template-columns:1fr}}
+  .mcard{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;cursor:pointer;transition:transform .15s,box-shadow .15s}
+  .mcard:hover{transform:translateY(-2px);box-shadow:0 12px 26px -16px rgba(0,0,0,.3)}
+  .mcard .wkn{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+  .mcard h4{font-family:var(--serif);font-weight:400;font-size:18px;margin:8px 0 4px}
+  .mcard p{margin:0;font-size:12.5px;color:var(--soft)}
+  /* pricing */
+  .price2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:4px}
+  @media(max-width:620px){.price2{grid-template-columns:1fr}}
+  .pc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;position:relative}
+  .pc.you{border-color:var(--green)}
+  .pc.locked{background:var(--cream-200)}
+  .pc .pt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+  .pc h4{font-size:17px;margin:8px 0 2px}
+  .pc .pp{font-family:var(--serif);font-size:26px;margin:6px 0}
+  .pc .pp small{font-family:var(--sans);font-size:13px;color:var(--soft)}
+  .pc ul{list-style:none;padding:0;margin:12px 0 0}
+  .pc li{font-size:12.5px;color:var(--soft);padding:5px 0 5px 18px;position:relative}
+  .pc li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--bronze)}
+  .pc .own{position:absolute;top:18px;right:20px;font-family:var(--mono);font-size:10px;color:var(--green);text-transform:uppercase}
+  .pc .btn{display:block;text-align:center;margin-top:14px;padding:10px;border-radius:128px;font-weight:700;font-size:12.5px;cursor:pointer}
+  .pc .btn.go{background:var(--bronze);color:#fff}
+  .pc .gate{margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--bronze);letter-spacing:.02em}
+  /* lesson view */
+  .lv{display:none}
+  .crumb{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--soft);text-transform:uppercase;margin-bottom:14px;cursor:pointer}
+  .crumb:hover{color:var(--bronze)}
+  .player{position:relative;aspect-ratio:16/9;background:radial-gradient(circle at 30% 30%,#24405a,#0c1722);
+    border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .player .pbtn{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s}
+  .player .pbtn:hover{transform:scale(1.06)}
+  .player .pbtn::after{content:"";border-left:20px solid var(--navy);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:6px}
+  .player.playing .pbtn{display:none}
+  .player .live{display:none;color:rgba(255,255,255,.85);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+  .player.playing .live{display:block}
+  .player .mini{position:absolute;bottom:12px;right:14px;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase}
+  .lv h2{font-family:var(--serif);font-weight:400;font-size:26px;margin:20px 0 6px}
+  .lmeta{display:flex;gap:18px;font-family:var(--mono);font-size:11px;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:16px}
+  .lv .desc{color:var(--soft);font-size:14.5px;max-width:640px}
+  .lnav{display:flex;justify-content:space-between;gap:12px;margin:26px 0}
+  .lnav button{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:left;cursor:pointer;font:inherit}
+  .lnav button:hover{border-color:var(--bronze)}
+  .lnav button:disabled{opacity:.4;cursor:not-allowed}
+  .lnav .d{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase}
+  .lnav .t{font-size:13px;margin-top:3px;color:var(--ink)}
+  .lnav .next{text-align:right}
+  .rowbtns{display:flex;gap:12px;flex-wrap:wrap}
+  .markbtn{background:var(--green);color:#fff;border:none;border-radius:128px;padding:11px 22px;font-weight:700;font-size:13px;cursor:pointer}
+  .markbtn.done{background:var(--cream-300);color:var(--soft)}
+  .askbtn{background:var(--navy);color:#fff;border:none;border-radius:128px;padding:11px 22px;font-weight:700;font-size:13px;cursor:pointer}
+  /* AI drawer */
+  .fab{position:fixed;bottom:22px;right:22px;z-index:40;display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;
+    border:none;border-radius:128px;padding:12px 20px 12px 14px;cursor:pointer;box-shadow:0 14px 34px -12px rgba(0,0,0,.5)}
+  .fab .av{width:30px;height:30px;border-radius:50%;background:var(--champagne);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px}
+  .fab b{font-size:13px}
+  .scrim{position:fixed;inset:0;background:rgba(10,10,10,.5);opacity:0;pointer-events:none;transition:opacity .25s;z-index:45}
+  .scrim.on{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,94vw);background:var(--navy);color:#fff;z-index:50;
+    transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
+  .drawer.on{transform:translateX(0)}
+  .dhead{display:flex;align-items:center;gap:12px;padding:20px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .dhead .av{width:40px;height:40px;border-radius:50%;background:var(--champagne);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px}
+  .dhead b{display:block;font-size:14px}
+  .dhead small{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.05em;text-transform:uppercase}
+  .dhead .x{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer}
+  .dbody{flex:1;overflow-y:auto;padding:20px}
+  .bub{max-width:84%;padding:11px 15px;border-radius:14px;font-size:13.5px;line-height:1.55;margin-bottom:12px}
+  .bub.me{margin-left:auto;background:rgba(255,255,255,.12);border-bottom-right-radius:4px}
+  .bub.ai{background:var(--champagne);color:var(--navy);border-bottom-left-radius:4px}
+  .dinp{padding:14px 20px;border-top:1px solid rgba(255,255,255,.12);display:flex;gap:10px;align-items:center}
+  .dinp .f{flex:1;border:1px solid rgba(255,255,255,.2);border-radius:128px;padding:10px 16px;color:rgba(255,255,255,.5);font-size:13px}
+  .dinp .s{background:var(--champagne);color:var(--navy);border:none;border-radius:128px;padding:10px 16px;font-family:var(--mono);font-size:11px;text-transform:uppercase;cursor:pointer}
+  @media(max-width:900px){
+    .side{position:fixed;z-index:60;transform:translateX(-100%);transition:transform .3s}
+    .side.on{transform:translateX(0)}
+    .topbar{display:flex}
+  }
+</style>
+</head>
+<body>
+<div class="disclaimer">画面イメージ（モック）— レッスン名・構成はすべてサンプルです。実際の内容は橋本さんが設計します。</div>
+
+<div class="topbar">
+  <button class="burger" onclick="toggleSide()">☰</button>
+  <b><span style="color:var(--champagne)">HASHIMOTO</span> PUTTING</b>
+  <span style="width:28px"></span>
+</div>
+
+<div class="shell">
+  <!-- SIDEBAR -->
+  <aside class="side" id="side">
+    <div class="brand"><b><span>HASHIMOTO</span> PUTTING</b><small>Academy</small></div>
+    <div class="prog">
+      <div class="lab"><span>進捗</span><span id="progtxt">0 / 0</span></div>
+      <div class="bar"><i id="progbar" style="width:0%"></i></div>
+    </div>
+    <div class="ov-link" onclick="showOverview()">◰ コース概要</div>
+    <nav class="mods" id="mods"></nav>
+    <div class="foot">
+      <span class="owntag">全コンテンツ購入済み</span>
+      <div class="upg" onclick="openAI()">月額コーチングに参加</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="pane">
+      <!-- OVERVIEW -->
+      <section id="overview">
+        <div class="hero">
+          <svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g fill="none" stroke="#d5c6a0" stroke-width="1">
+              <ellipse cx="430" cy="150" rx="70" ry="48"/>
+              <ellipse cx="430" cy="150" rx="120" ry="86"/>
+              <ellipse cx="430" cy="150" rx="172" ry="126"/>
+              <ellipse cx="430" cy="150" rx="226" ry="168"/>
+              <ellipse cx="430" cy="150" rx="282" ry="212"/>
+            </g>
+          </svg>
+          <div class="hc">
+            <div class="k">パッティング・マスタープログラム</div>
+            <h1>転がりを、科学する。</h1>
+            <p>橋本真和が設計する、全12週間の体系的プログラム。技術・距離感・読み・メンタルを、一歩ずつ自分のものに。</p>
+            <button class="play" onclick="resume()">▶ 続きから再生（Week 2)</button>
+            <div class="stats">
+              <div><div class="n">12</div><div class="l">週間</div></div>
+              <div><div class="n" id="stTotal">60</div><div class="l">レッスン</div></div>
+              <div><div class="n">約8時間</div><div class="l">総尺</div></div>
+              <div><div class="n" id="stPct">0%</div><div class="l">達成</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sect">カリキュラム</div>
+        <div class="mcards" id="mcards"></div>
+
+        <div class="sect">あなたのプラン</div>
+        <div class="price2">
+          <div class="pc you">
+            <span class="own">✓ 購入済み</span>
+            <div class="pt">買い切り ・ 唯一の購入方法</div>
+            <h4>全コンテンツ講座</h4>
+            <div class="pp">¥150,000 <small>一括（約 $1,000）</small></div>
+            <ul><li>全12週・全レッスンが見放題</li><li>何度でも、自分のペースで</li><li>購入すれば「自分のもの」</li></ul>
+          </div>
+          <div class="pc locked">
+            <div class="pt">月額コーチング ・ 任意</div>
+            <h4>AI橋本コーチ＋ライブ</h4>
+            <div class="pp">¥9,800 <small>／ 月</small></div>
+            <ul><li>AI橋本コーチに24時間質問</li><li>月例オンライン・コーチング</li><li>コミュニティ＆チャレンジ</li></ul>
+            <div class="btn go" onclick="openAI()">コーチングに参加する</div>
+            <div class="gate">※ 講座購入者だけが加入できます（あなたは加入可能）</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LESSON -->
+      <section class="lv" id="lessonView">
+        <div class="crumb" onclick="showOverview()" id="crumb">← コース概要にもどる</div>
+        <div class="player" id="player">
+          <div class="pbtn" onclick="playToggle()"></div>
+          <div class="live">● 再生中（サンプル）</div>
+          <div class="mini">ミニプレーヤー対応 ・ スクロールしても見続けられる</div>
+        </div>
+        <h2 id="lvTitle">レッスンタイトル</h2>
+        <div class="lmeta"><span id="lvWk">Week 01</span><span id="lvDur">10:24</span><span id="lvTag">レッスン</span></div>
+        <p class="desc" id="lvDesc"></p>
+        <div class="rowbtns">
+          <button class="markbtn" id="markBtn" onclick="toggleDone()">完了にする</button>
+          <button class="askbtn" onclick="openAI()">このレッスンをAIに質問</button>
+        </div>
+        <div class="lnav">
+          <button id="prevBtn" onclick="nav(-1)"><div class="d">前のレッスン</div><div class="t" id="prevT">—</div></button>
+          <button id="nextBtn" class="next" onclick="nav(1)"><div class="d">次のレッスン</div><div class="t" id="nextT">—</div></button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- AI -->
+<button class="fab" onclick="openAI()"><span class="av">橋</span><b>AI橋本コーチ</b></button>
+<div class="scrim" id="scrim" onclick="closeAI()"></div>
+<aside class="drawer" id="drawer">
+  <div class="dhead"><span class="av">橋</span><div><b>AI橋本コーチ</b><small>24時間対応 ・ 橋本メソッド学習済み</small></div><button class="x" onclick="closeAI()">×</button></div>
+  <div class="dbody">
+    <div class="bub ai">こんにちは。今日の練習について、何でも聞いてください。Week 2の「距離感」でつまずいていませんか？</div>
+    <div class="bub me">下りの速いラインで、いつもオーバーします。</div>
+    <div class="bub ai">下りは「振り幅を小さく」より「タッチを抜く」意識が有効です。Week 4のドリルを、半分の距離の目標で試してみましょう。10球中8球を目標ラインの手前30cmに止める練習がおすすめです。（※サンプル回答）</div>
+    <div class="bub me">明日の試合前、何をやればいい？</div>
+    <div class="bub ai">前夜はテンポを整えるのが最優先です。当日朝は1.5mを10球だけ。感覚を「上書きしない」のがコツです。</div>
+  </div>
+  <div class="dinp"><div class="f">橋本コーチに質問する…</div><button class="s">送信</button></div>
+</aside>
+
+<script>
+  // ---- Sample data (illustrative only; real curriculum designed by Hashimoto) ----
+  const THEMES=["グリップと構え","ストロークの軌道","距離感の基礎","振り幅と距離","ロングパット","スピードとライン",
+    "傾斜の読み方","芝目と速さ","プレッシャー対策","1.5mの精度","本番想定ドリル","総仕上げ"];
+  const PILLAR=["技術","技術","距離感","距離感","距離感","読み","読み","読み","メンタル","メンタル","メンタル","技術"];
+  const SUFFIX=["基本の解説","ドリル①","よくある間違い","実践ドリル","今週のまとめ"];
+  const DUR=["10:24","3:48","6:12","4:30","2:05"];
+  const weeks=THEMES.map((t,i)=>({t,k:PILLAR[i],lessons:SUFFIX.map((s,j)=>({
+    title:`${t}：${s}`, dur:DUR[j], tag:j===1||j===3?"ドリル":j===4?"まとめ":"レッスン",
+    done:(i===0)||(i===1&&j<3)
+  }))}));
+  const TOTAL=weeks.reduce((a,w)=>a+w.lessons.length,0);
+  document.getElementById('stTotal').textContent=TOTAL;
+  let cur={w:1,l:0};
+
+  // ---- Sidebar ----
+  const mods=document.getElementById('mods');
+  weeks.forEach((w,i)=>{
+    const m=document.createElement('div'); m.className='mod'+(i===1?' open':''); m.dataset.w=i;
+    m.innerHTML=`<div class="mh" onclick="toggleMod(${i})">
+        <span class="wkn">W${String(i+1).padStart(2,'0')}</span>
+        <span class="mt">${w.t}</span><span class="chev">▶</span></div>
+      <div class="lessons">${w.lessons.map((l,j)=>`
+        <div class="lz ${l.done?'done':''}" data-w="${i}" data-l="${j}" onclick="openLesson(${i},${j})">
+          <span class="ck">${l.done?'✓':''}</span><span>${SUFFIX[j]}</span><span class="ld">${l.dur}</span></div>`).join('')}</div>`;
+    mods.appendChild(m);
+  });
+
+  // ---- Overview module cards ----
+  const mc=document.getElementById('mcards');
+  [0,1,2,3].forEach(i=>{
+    const w=weeks[i];const d=document.createElement('div');d.className='mcard';d.onclick=()=>openLesson(i,0);
+    d.innerHTML=`<div class="wkn">Week ${String(i+1).padStart(2,'0')} ・ ${w.k}</div>
+      <h4>${w.t}</h4><p>レッスン ${w.lessons.length}本 ・ ドリル付き</p>`;
+    mc.appendChild(d);
+  });
+
+  function toggleMod(i){document.querySelectorAll('.mod')[i].classList.toggle('open');}
+  function recalcProgress(){
+    let done=0;weeks.forEach(w=>w.lessons.forEach(l=>{if(l.done)done++;}));
+    const pct=Math.round(done/TOTAL*100);
+    document.getElementById('progbar').style.width=pct+'%';
+    document.getElementById('progtxt').textContent=`${done} / ${TOTAL}`;
+    document.getElementById('stPct').textContent=pct+'%';
+  }
+  recalcProgress();
+
+  // ---- Views ----
+  const ov=document.getElementById('overview'),lv=document.getElementById('lessonView');
+  function showOverview(){ov.style.display='block';lv.style.display='none';window.scrollTo(0,0);closeSide();}
+  function openLesson(w,l){
+    cur={w,l};const L=weeks[w].lessons[l];
+    ov.style.display='none';lv.style.display='block';
+    document.getElementById('lvTitle').textContent=L.title;
+    document.getElementById('lvWk').textContent=`Week ${String(w+1).padStart(2,'0')} ・ ${weeks[w].k}`;
+    document.getElementById('lvDur').textContent=L.dur;
+    document.getElementById('lvTag').textContent=L.tag;
+    document.getElementById('lvDesc').textContent=`「${weeks[w].t}」を題材に、${L.tag==='ドリル'?'すぐ試せる練習メニュー':'考え方とコツ'}を解説します。動画を見ながら、実際に手を動かしてみましょう。（※サンプル本文）`;
+    document.getElementById('player').classList.remove('playing');
+    // mark active in sidebar
+    document.querySelectorAll('.lz').forEach(e=>e.classList.remove('active'));
+    const a=document.querySelector(`.lz[data-w="${w}"][data-l="${l}"]`);
+    if(a){a.classList.add('active');const mod=document.querySelectorAll('.mod')[w];if(mod)mod.classList.add('open');}
+    // nav buttons
+    const flat=[];weeks.forEach((ww,wi)=>ww.lessons.forEach((ll,li)=>flat.push({wi,li,t:ll.title})));
+    const idx=flat.findIndex(f=>f.wi===w&&f.li===l);
+    const pb=document.getElementById('prevBtn'),nb=document.getElementById('nextBtn');
+    pb.disabled=idx<=0;nb.disabled=idx>=flat.length-1;
+    document.getElementById('prevT').textContent=idx>0?flat[idx-1].t.split('：')[1]||flat[idx-1].t:'—';
+    document.getElementById('nextT').textContent=idx<flat.length-1?flat[idx+1].t.split('：')[1]||flat[idx+1].t:'—';
+    // mark button state
+    const mb=document.getElementById('markBtn');
+    if(L.done){mb.textContent='✓ 完了済み';mb.classList.add('done');}else{mb.textContent='完了にする';mb.classList.remove('done');}
+    window.scrollTo(0,0);closeSide();
+  }
+  function nav(d){
+    const flat=[];weeks.forEach((ww,wi)=>ww.lessons.forEach((ll,li)=>flat.push({wi,li})));
+    const idx=flat.findIndex(f=>f.wi===cur.w&&f.li===cur.l);
+    const t=flat[idx+d];if(t)openLesson(t.wi,t.li);
+  }
+  function resume(){openLesson(1,3);}
+  function playToggle(){document.getElementById('player').classList.add('playing');}
+  function toggleDone(){
+    const L=weeks[cur.w].lessons[cur.l];L.done=!L.done;
+    const mb=document.getElementById('markBtn');
+    if(L.done){mb.textContent='✓ 完了済み';mb.classList.add('done');}else{mb.textContent='完了にする';mb.classList.remove('done');}
+    const lz=document.querySelector(`.lz[data-w="${cur.w}"][data-l="${cur.l}"]`);
+    if(lz){lz.classList.toggle('done',L.done);lz.querySelector('.ck').textContent=L.done?'✓':'';}
+    recalcProgress();
+  }
+  // ---- AI drawer ----
+  function openAI(){document.getElementById('drawer').classList.add('on');document.getElementById('scrim').classList.add('on');}
+  function closeAI(){document.getElementById('drawer').classList.remove('on');document.getElementById('scrim').classList.remove('on');}
+  // ---- mobile sidebar ----
+  function toggleSide(){document.getElementById('side').classList.toggle('on');}
+  function closeSide(){document.getElementById('side').classList.remove('on');}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAI();closeSide();}});
+</script>
+</body>
+</html>

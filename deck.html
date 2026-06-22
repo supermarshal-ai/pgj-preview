@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>橋本真和 パッティングアカデミー 事業提案書</title>
+<style>
+  :root{
+    --cream:#ffffff; --cream-200:#f6f5f3; --cream-300:#ececea; --cream-400:#d7d6d3;
+    --ink:#0a0a0a; --soft:#4f575e; --muted:#8a8a88; --line:#d6d0c4;
+    --bronze:#5e4d35; --gold:#9b7934; --navy:#1c2e40; --slate:#536878; --champagne:#d5c6a0;
+    --sans:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans","Yu Gothic",sans-serif;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,"Times New Roman",serif;
+    --mono:ui-monospace,Menlo,Monaco,"SF Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);
+    font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased;font-size:16px;font-feature-settings:"palt"}
+  .slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:72px 24px;border-bottom:1px solid var(--line);position:relative}
+  .inner{max-width:900px;margin:0 auto;width:100%}
+  .no{position:absolute;top:28px;right:28px;font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:20px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,6vw,56px);line-height:1.22;margin:0 0 20px;letter-spacing:.01em}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,4.4vw,40px);line-height:1.32;margin:0 0 22px;letter-spacing:.01em}
+  h3{font-family:var(--sans);font-weight:700;font-size:18px;margin:0 0 8px;color:var(--ink);letter-spacing:.01em}
+  p{margin:0 0 16px;color:var(--soft);font-size:clamp(15px,2vw,17px)}
+  p.big{font-size:clamp(17px,2.5vw,22px);color:var(--ink);line-height:1.7}
+  .accent{color:var(--bronze);font-weight:500}
+  .grid{display:grid;gap:16px;margin-top:8px}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:700px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--cream-200);border:1px solid var(--line);border-radius:6px;padding:24px 26px}
+  .card p{margin:0;font-size:15px}.card h3{font-size:17px}
+  .num{font-family:var(--serif);font-size:clamp(36px,6vw,52px);color:var(--bronze);line-height:1;display:block;margin-bottom:8px;font-weight:400}
+  ul{list-style:none;padding:0;margin:16px 0 0}
+  li{padding:12px 0 12px 26px;position:relative;border-bottom:1px solid var(--line);color:var(--soft);font-size:clamp(15px,2vw,16px)}
+  li:last-child{border-bottom:none}
+  li::before{content:"";position:absolute;left:2px;top:20px;width:7px;height:7px;background:var(--gold);border-radius:50%}
+  li b{color:var(--ink);font-weight:700}
+  .quote{font-family:var(--serif);font-weight:400;font-size:clamp(22px,3.6vw,34px);line-height:1.55;color:var(--cream-200);letter-spacing:.01em}
+  .callout{border-left:2px solid var(--bronze);background:rgba(94,77,53,.05);padding:18px 24px;border-radius:0 6px 6px 0;margin-top:10px}
+  .callout p{margin:0;color:var(--ink)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10px;background:var(--ink);color:var(--cream);border-radius:3px;padding:3px 9px;letter-spacing:.06em;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+  .navy{background:var(--navy);color:var(--cream-200)}
+  .navy .kicker{color:var(--champagne)}
+  .navy h2,.navy h1{color:var(--cream)}
+  .navy p{color:rgba(244,243,238,.74)}
+  .navy .accent{color:var(--champagne)}
+  .navy .num{color:var(--champagne)}
+  .navy li{border-color:rgba(255,255,255,.16);color:rgba(244,243,238,.8)}
+  .navy li b{color:#fff}.navy li::before{background:var(--champagne)}
+  .navy .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14)}
+  .navy .card h3{color:#fff}.navy .card p{color:rgba(244,243,238,.72)}
+  .navy .callout{border-color:var(--champagne);background:rgba(213,198,160,.08)}.navy .callout p{color:var(--cream-200)}
+  .brandmark{font-family:var(--sans);letter-spacing:.22em;font-size:12px;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:34px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+  .pill{border:1px solid currentColor;border-radius:128px;padding:9px 22px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+  .navy .pill{color:rgba(244,243,238,.85)}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin-top:20px}
+  .flow .node{flex:1 1 140px;background:var(--cream-200);border:1px solid var(--line);border-radius:6px;padding:16px 18px;font-size:14px;color:var(--ink)}
+  .flow .node b{color:var(--gold);display:block;font-family:var(--mono);font-size:11px;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+  .arrow{display:flex;align-items:center;color:var(--bronze);font-size:16px}
+  @media(max-width:700px){.arrow{display:none}}
+  .tableScroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin-top:12px}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--cream-200);color:var(--bronze);font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+  td{color:var(--soft)}td b{color:var(--ink);font-weight:700}
+  tr:last-child td{border-bottom:none}
+  .footnote{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:22px;line-height:1.7}
+  .offer{border:1px solid var(--line);border-radius:8px;padding:26px 28px;background:var(--cream-200);position:relative;display:flex;flex-direction:column}
+  .offer.featured{border-color:var(--bronze);border-width:1.5px;background:#fffdf8}
+  .offer .badge{position:absolute;top:-11px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--bronze);color:#fff;padding:3px 10px;border-radius:3px}
+  .offer .otype{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .offer h3{font-size:20px;margin:10px 0 2px}
+  .offer .price{font-family:var(--serif);font-size:30px;color:var(--ink);margin:8px 0 2px}
+  .offer .price small{font-size:14px;color:var(--soft);font-family:var(--sans)}
+  .offer ul{margin-top:14px}
+  .offer li{font-size:14px;padding:9px 0 9px 22px}.offer li::before{top:17px;width:6px;height:6px}
+  .gate{margin-top:auto;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--bronze);padding-top:14px}
+  .choice{border:1px solid var(--line);border-radius:6px;padding:26px 28px;background:var(--cream-200);position:relative}
+  .choice.featured{border-color:var(--bronze);border-width:1.5px}
+  .choice .badge{position:absolute;top:-11px;left:24px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--bronze);color:#fff;padding:3px 10px;border-radius:3px}
+  .choice .wk{font-family:var(--serif);font-size:44px;color:var(--ink);line-height:1}
+  .choice .wk small{font-size:18px;color:var(--soft)}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="slide navy">
+  <div class="inner">
+    <div class="brandmark">Hashimoto Putting Academy &nbsp;·&nbsp; Preserve Golf Japan</div>
+    <div class="kicker">事業提案</div>
+    <h1>橋本真和<br>オンライン・パッティング<br>アカデミー</h1>
+    <p class="big">日本一のパッティングコーチを、<span class="accent">日本一のパッティング・ブランド</span>へ。</p>
+    <div class="meta"><span class="pill">2026年6月</span><span class="pill">2026年9月 ローンチ目標</span></div>
+  </div>
+</section>
+
+<!-- 1 はじめに -->
+<section class="slide">
+  <div class="inner"><span class="no">01</span><span class="kicker">はじめに</span>
+    <h2>なぜ、今このお話をするのか</h2>
+    <p class="big">橋本さんは、日本でも数少ない<span class="accent">「パッティング専門」</span>のトップコーチです。河本結プロ、佐久間朱莉プロをはじめツアー選手を指導し、データに基づいたメソッドを確立されています。</p>
+    <p class="big">その実力と知見は、本来もっと多くのゴルファーに届くべきものです。<br>しかし、<span class="accent">時間という制約</span>が、それを難しくしています。</p>
+  </div>
+</section>
+
+<!-- 2 課題 -->
+<section class="slide">
+  <div class="inner"><span class="no">02</span><span class="kicker">課題</span>
+    <h2>「時間」が、収入とリーチの上限を決めている</h2>
+    <div class="grid g3">
+      <div class="card"><span class="num">1対1</span><h3>対面の限界</h3><p>レッスンは時間と体力の切り売り。1日に教えられる人数には上限があり、収入もそこで頭打ちになります。</p></div>
+      <div class="card"><span class="num">地理</span><h3>場所の制約</h3><p>スタジオに来られる人しか教えられない。全国・全世界のゴルファーには届きません。</p></div>
+      <div class="card"><span class="num">蓄積</span><h3>残らない知見</h3><p>その日のレッスンはその場で消えていく。橋本さんのメソッドが「資産」として積み上がっていません。</p></div>
+    </div>
+    <div class="callout" style="margin-top:22px"><p>橋本さんの価値は、<b>もっと大きく、もっと長く残るかたち</b>にできます。</p></div>
+  </div>
+</section>
+
+<!-- 3 市場の証明 -->
+<section class="slide">
+  <div class="inner"><span class="no">03</span><span class="kicker">市場の証明</span>
+    <h2>このモデルは、世界では既に成功している</h2>
+    <p>欧米では、トップコーチが「オンライン講座」と「会員制コーチング」で事業を築いています。</p>
+    <div class="grid g3">
+      <div class="card"><h3>Phil Kenyon Putting <span class="tag">putting</span></h3><p>マキロイらを指導するパッティング専門コーチ。段階式のオンラインプログラムを世界に提供。</p></div>
+      <div class="card"><h3>買い切り講座</h3><p>「結果が出る講座」は一括購入が定石。受講者は自分のペースで学べ、運営はまとまった売上を得られる。</p></div>
+      <div class="card"><h3>AIコーチ <span class="tag">new</span></h3><p>トニー・ロビンス、マシュー・ハッシーらが「自分のAI」を月額で提供。知見を24時間スケールさせる潮流。</p></div>
+    </div>
+    <p class="footnote">出典：LearnDash／Onform／Phil Kenyon Putting／各社AIコーチ事例（2025）。日本では、これらを掛け合わせた事例はまだ存在しません。</p>
+  </div>
+</section>
+
+<!-- 4 チャンス -->
+<section class="slide navy">
+  <div class="inner"><span class="no">04</span><span class="kicker">チャンス</span>
+    <h2>しかし、日本にはまだ存在しない</h2>
+    <p class="quote">「ツアーで実績のある<br>パッティング専門コーチによる、<br>日本語のオンライン講座とAIコーチ」</p>
+    <p class="big" style="margin-top:26px">——この場所は、まだ空いています。<br><span class="accent">最初に立つ人が、そのカテゴリーそのものになります。</span></p>
+    <div class="callout" style="margin-top:18px"><p>橋本さんには、それを獲る資格と実績が、既にあります。</p></div>
+  </div>
+</section>
+
+<!-- 5 ビジョン -->
+<section class="slide">
+  <div class="inner"><span class="no">05</span><span class="kicker">ビジョン</span>
+    <h2>目指すのは、日本一のパッティング・ブランド</h2>
+    <p class="big">橋本さんのお名前を冠したパーソナルブランドを、<span class="accent">日本のパッティングの代名詞</span>に育てます。</p>
+    <ul>
+      <li><b>世界観：</b>「才能」ではなく「科学と再現性」。データで、感覚を裏づける。</li>
+      <li><b>敵にするもの：</b>「パットはセンス」という思い込み。<b>パットは最も学べて、最も計測できる技術</b>だと証明する。</li>
+      <li><b>提供価値：</b>3パットに悩むアマチュアを、自宅にいながらトッププロ品質の指導で「2パット以内」に変える。</li>
+    </ul>
+    <p class="footnote">まずアマチュア層から広げ、軌道に乗せた後、競技者・上級者向けのトラックを段階的に追加します。</p>
+  </div>
+</section>
+
+<!-- 6 仕組み -->
+<section class="slide">
+  <div class="inner"><span class="no">06</span><span class="kicker">事業の仕組み</span>
+    <h2>無料で集め、本気の人に商品をご案内する</h2>
+    <p>欧米のトップコーチが使う「導線」を、そのまま日本向けに展開します。</p>
+    <div class="flow">
+      <div class="node"><b>① 集める</b>SNS・YouTubeの<br>無料コンテンツ</div>
+      <span class="arrow">→</span>
+      <div class="node"><b>② 信頼を築く</b>無料ガイド／<br>メール登録</div>
+      <span class="arrow">→</span>
+      <div class="node"><b>③ 講座を購入</b>全コンテンツを<br>買い切り</div>
+      <span class="arrow">→</span>
+      <div class="node"><b>④ 月額コーチング</b>購入者だけが<br>加入できる</div>
+    </div>
+    <p style="margin-top:20px">無料コンテンツで「日本一わかりやすいパット指導」として認知を取り、本気の人に講座を購入いただき、さらに伸ばしたい人を月額コーチングへご案内します。</p>
+  </div>
+</section>
+
+<!-- 7 2つの商品 -->
+<section class="slide">
+  <div class="inner"><span class="no">07</span><span class="kicker">商品設計</span>
+    <h2>商品は「講座」、続けたい人に「コーチング」</h2>
+    <p>コンテンツの購入方法は<b>一つだけ</b>。全コンテンツの買い切りです。そのうえで、もっと伸ばしたい人に月額コーチングをご用意します。</p>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="offer">
+        <span class="otype">買い切り ・ 唯一の購入方法</span>
+        <h3>全コンテンツ講座</h3>
+        <div class="price">¥150,000 <small>／ 一括（約 $1,000・例）</small></div>
+        <p style="color:var(--soft)">全○週間のプログラムを丸ごと購入。自分のペースで、何度でも視聴可能。買えば「自分のもの」。</p>
+        <ul>
+          <li>全レッスン動画・ドリル一式</li>
+          <li>進め方ガイドと練習メニュー</li>
+          <li>まとまった売上＝立ち上げの原資に</li>
+        </ul>
+      </div>
+      <div class="offer featured">
+        <span class="badge">継続収益</span>
+        <span class="otype">月額コーチング ・ 任意のアップグレード</span>
+        <h3>AI橋本コーチ＋ライブ</h3>
+        <div class="price">¥9,800 <small>／ 月（例）</small></div>
+        <p style="color:var(--soft)">「買って終わり」にしない。より深く、効率よく上達するための継続環境。</p>
+        <ul>
+          <li><b>AI橋本コーチ</b>が学習をナビゲート（24時間）</li>
+          <li>月例の<b>オンライン・コーチングレッスン</b></li>
+          <li>コミュニティ・チャレンジ・質問対応</li>
+        </ul>
+        <div class="gate">※ 講座を購入した方のみ加入できます</div>
+      </div>
+    </div>
+    <p class="footnote">金額はすべて検証前のイメージです。買い切り（約15万円）が、そのまま1人あたりの価値に。月額はその上に積み上がります。</p>
+  </div>
+</section>
+
+<!-- 8 AIコーチ -->
+<section class="slide navy">
+  <div class="inner"><span class="no">08</span><span class="kicker">月額コーチングの核</span>
+    <h2>AI橋本コーチ ── 知見を、24時間働かせる</h2>
+    <p class="big">橋本さんのメソッド・レッスン・よくある質問への答えを学習させた<span class="accent">専用AIコーチ</span>。会員はいつでも、橋本さん本人の考え方に基づいた答えを受け取れます。</p>
+    <div class="grid g2">
+      <div class="card"><h3>会員にとって</h3><p>「このパット、どう読む？」「練習が伸び悩んでいる」——深夜でも即、橋本さんの教えに沿った答えが返ってくる。</p></div>
+      <div class="card"><h3>橋本さんにとって</h3><p>あなたが寝ている間も、AIがあなたの知見で指導を続ける。1対1の限界を超えて、価値が広がり続けます。</p></div>
+    </div>
+    <div class="callout" style="margin-top:18px"><p>海外ではトニー・ロビンス（月99ドル）、マシュー・ハッシー（月39ドル）らが既に「自分のAI」を提供。<b>パッティングで、日本初を獲りにいきます。</b></p></div>
+  </div>
+</section>
+
+<!-- 9 講座の長さ -->
+<section class="slide">
+  <div class="inner"><span class="no">09</span><span class="kicker">ご決定いただくこと</span>
+    <h2>講座の長さを、お選びください</h2>
+    <p class="big">最初に固めたいのは、<span class="accent">講座のボリューム</span>です。どちらの構成にするか、橋本さんに選んでいただきます。</p>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="choice">
+        <div class="wk">8<small> 週間</small></div>
+        <h3 style="margin-top:12px;color:var(--ink)">8週間プログラム</h3>
+        <p style="color:var(--soft)">撮影量を抑え、9月ローンチに、より確実に間に合わせやすい構成。</p>
+      </div>
+      <div class="choice featured">
+        <div class="badge">おすすめ</div>
+        <div class="wk">12<small> 週間</small></div>
+        <h3 style="margin-top:12px;color:var(--ink)">12週間プログラム</h3>
+        <p style="color:var(--soft)">海外トップコーチの王道。受講者の満足度・完走率が高く、ブランドの厚みが出る。</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:20px"><p><b>レッスンの中身は、すべて橋本さんが設計します。</b>何を・どんな順序で教えるか——その構成こそが橋本さんの専門領域です。私たちが用意するのは、講座の長さと形式という「器」だけです。</p></div>
+  </div>
+</section>
+
+<!-- 10 必要なコンテンツ量 -->
+<section class="slide">
+  <div class="inner"><span class="no">10</span><span class="kicker">制作ボリュームの目安</span>
+    <h2>どれくらいの本数を作るか</h2>
+    <p>目安をお出しします。<b>週末はラウンドの日</b>と考え、学習は<b>平日5日</b>を想定。1日1本のペースが基本です。</p>
+    <div class="tableScroll">
+      <table>
+        <tr><th>プログラム</th><th>学習日（週5日）</th><th>1日1本</th><th>2本立て（ショート＋ロング）</th></tr>
+        <tr><td><b>8週間</b></td><td>40日</td><td>約 <b>40本</b></td><td>約 <b>80本</b></td></tr>
+        <tr><td><b>12週間</b></td><td>60日</td><td>約 <b>60本</b></td><td>約 <b>120本</b></td></tr>
+      </table>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>おすすめの「2本立て」</h3><p><b>メインレッスン（8〜12分）</b>＝その日の学び＋<b>デイリードリル（2〜4分）</b>＝すぐ試せる練習。短尺は継続率を大きく上げます。</p></div>
+      <div class="card"><h3>無理のない撮影計画</h3><p>たとえば12週・2本立て＝約120本でも、1日の収録で10〜15本は十分可能。<b>7〜8月の数日間×複数回</b>で撮りきれる量です。</p></div>
+    </div>
+    <p class="footnote">あくまで目安です。本数・尺・配分は、橋本さんのメソッドに合わせて一緒に最適化します。</p>
+  </div>
+</section>
+
+<!-- 11 制作 -->
+<section class="slide">
+  <div class="inner"><span class="no">11</span><span class="kicker">制作スケジュール</span>
+    <h2>7月・8月に、全コンテンツを撮影します</h2>
+    <p class="big">9月ローンチで講座を完成させるには、<span class="accent">7〜8月の2か月で全話を撮影しきる</span>必要があります。月数本のペースではなく、短期間にまとめて収録する計画です。</p>
+    <div class="grid g2" style="margin-top:8px">
+      <div class="card"><h3>橋本さんにお願いすること</h3><ul style="margin-top:4px">
+        <li>7〜8月に、<b>まとまった撮影日</b>を確保いただく</li>
+        <li>ご自身のメソッド＝レッスン構成を組み立てていただく</li>
+        <li>カメラの前で、いつもどおり教えていただく</li>
+      </ul></div>
+      <div class="card"><h3>私たちが担うこと</h3><ul style="margin-top:4px">
+        <li>撮影・編集・テロップ・サムネイル、すべての制作</li>
+        <li>収録が滞らないよう、進行表とスタジオを用意</li>
+        <li>9月までに全話を仕上げ、余裕をもって公開</li>
+      </ul></div>
+    </div>
+    <div class="callout" style="margin-top:18px"><p>夏のあいだに撮影を終えてしまえば、ローンチ後の橋本さんのご負担は大きく軽くなります。<b>最初の山場を、一緒に越えましょう。</b></p></div>
+  </div>
+</section>
+
+<!-- 12 役割分担 -->
+<section class="slide">
+  <div class="inner"><span class="no">12</span><span class="kicker">役割分担</span>
+    <h2>橋本さんは「創る」。私たちは「すべてを担う」。</h2>
+    <div class="grid g2">
+      <div class="card"><h3>橋本さん</h3><ul style="margin-top:4px">
+        <li>メソッドとレッスン構成（中身）</li>
+        <li>ブランドの「顔」としての出演・撮影</li>
+        <li>ライブコーチング・対面レッスン</li>
+      </ul></div>
+      <div class="card"><h3>Preserve（私たち）</h3><ul style="margin-top:4px">
+        <li>ブランド構築・戦略・デザイン</li>
+        <li>講座サイト・AIコーチ・アプリの開発・運営</li>
+        <li>マーケティング・撮影編集・集客</li>
+        <li>決済・カスタマー対応・物販・資金</li>
+      </ul></div>
+    </div>
+    <p class="big" style="margin-top:20px">橋本さんは、<span class="accent">経営の負担をゼロ</span>に。指導という最も得意なことに専念していただきます。</p>
+  </div>
+</section>
+
+<!-- 13 規模感 -->
+<section class="slide navy">
+  <div class="inner"><span class="no">13</span><span class="kicker">規模感</span>
+    <h2>1人の購入が、どれだけの価値になるか</h2>
+    <p class="big">買い切り講座は<span class="accent">1人あたり約15万円</span>。さらに、その一部の方が月額コーチング（約1万円／月）を継続します。</p>
+    <div class="grid g2" style="margin-top:8px">
+      <div class="card"><span class="num">300名</span><h3>立ち上げ期</h3><p>300名 × 15万円 = <b>約4,500万円</b>（＋月額の継続収益）。</p></div>
+      <div class="card"><span class="num">1,000名</span><h3>成長期</h3><p>1,000名 × 15万円 = <b>約1.5億円</b>（＋月額の継続収益）。</p></div>
+    </div>
+    <p class="footnote">※概算イメージ。対面レッスン・物販を加えると、さらに上振れします。具体的な料金・条件は別途協議のうえ決定します。</p>
+  </div>
+</section>
+
+<!-- 14 スケジュール -->
+<section class="slide">
+  <div class="inner"><span class="no">14</span><span class="kicker">全体スケジュール</span>
+    <h2>9月ローンチに向けて</h2>
+    <div class="tableScroll">
+      <table>
+        <tr><th>時期</th><th>橋本さん</th><th>私たち（並行）</th></tr>
+        <tr><td><b>6月下旬</b></td><td>講座の長さを決定／構成案づくり・テスト撮影</td><td>ブランド設計・スタジオ／進行表の準備</td></tr>
+        <tr><td><b>7月</b></td><td>講座 前半を撮影</td><td>講座サイト・AIコーチ・アプリ構築</td></tr>
+        <tr><td><b>8月</b></td><td>講座 後半を撮影</td><td>編集・ベータ会員でテスト・料金確定</td></tr>
+        <tr><td><b>9月</b></td><td>ローンチ告知・初オンラインコーチング</td><td>待機リストへ先行販売 → 一般公開</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:16px">夏のあいだに<b>講座を撮影しきる</b>ことが、9月の余裕あるスタートの鍵です。</p>
+  </div>
+</section>
+
+<!-- 15 次のステップ -->
+<section class="slide navy">
+  <div class="inner"><span class="no">15</span><span class="kicker">次のステップ</span>
+    <h2>ご賛同いただきたい、3つのこと</h2>
+    <p class="big">私たちは、橋本さんの実力を信じています。そして、それを<span class="accent">大きく、長く残るブランド</span>に変える準備があります。</p>
+    <ul style="margin-top:14px">
+      <li>パートナーシップへのご賛同</li>
+      <li><b>講座の長さ（8週／12週）</b>のご決定</li>
+      <li>7〜8月の<b>撮影へのご協力</b></li>
+    </ul>
+    <p class="big" style="margin-top:26px">あとは、すべて私たちにお任せください。<br><span class="accent">一緒に、日本一のパッティングブランドを創りましょう。</span></p>
+    <div class="meta"><span class="pill">Hashimoto Putting Academy</span><span class="pill">Preserve Golf Japan</span></div>
+    <p class="footnote" style="color:rgba(244,243,238,.5)">※本資料は提案ドラフトです。数値はすべて検証前のイメージであり、最終条件は別途書面で定めます。アカデミーの実際の画面イメージは、別添のプレビューをご覧ください。</p>
+  </div>
+</section>
+
+</body>
+</html>
