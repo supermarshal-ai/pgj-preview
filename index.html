@@ -14,56 +14,43 @@
   body{margin:0;min-height:100vh;background:var(--navy);color:var(--cream);font-family:var(--sans);
     display:flex;align-items:center;justify-content:center;padding:40px 24px;-webkit-font-smoothing:antialiased;
     font-feature-settings:"palt"}
-  .wrap{max-width:780px;width:100%}
+  .wrap{max-width:760px;width:100%}
   .k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne)}
   h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,6vw,46px);line-height:1.25;margin:16px 0 10px}
-  .sub{color:rgba(244,243,238,.72);margin:0 0 34px;font-size:16px;line-height:1.7;max-width:560px}
-  .grouplbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--champagne);
-    margin:26px 0 12px;opacity:.85}
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .sub{color:rgba(244,243,238,.72);margin:0 0 36px;font-size:16px;line-height:1.7;max-width:560px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:600px){.cards{grid-template-columns:1fr}}
   a.card{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
-    border-radius:12px;padding:22px 24px;color:var(--cream);transition:transform .15s,border-color .15s,background .15s}
+    border-radius:12px;padding:26px 26px 24px;color:var(--cream);transition:transform .15s,border-color .15s,background .15s}
   a.card:hover{transform:translateY(-3px);border-color:var(--champagne);background:rgba(213,198,160,.08)}
   a.card .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--champagne)}
-  a.card h2{font-family:var(--serif);font-weight:400;font-size:20px;margin:10px 0 6px}
-  a.card p{margin:0;font-size:13px;color:rgba(244,243,238,.66);line-height:1.6}
-  a.card .go{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  a.card h2{font-family:var(--serif);font-weight:400;font-size:22px;margin:12px 0 6px}
+  a.card p{margin:0;font-size:13.5px;color:rgba(244,243,238,.66);line-height:1.6}
+  a.card .go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
     text-transform:uppercase;color:var(--champagne)}
-  .foot{margin-top:34px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(244,243,238,.4);line-height:1.8}
+  .foot{margin-top:32px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(244,243,238,.4);line-height:1.8}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="k">Preserve Golf Japan</div>
     <h1>橋本真和<br>パッティングアカデミー</h1>
-    <p class="sub">事業提案・アカデミー画面・価格/ブランドの分析資料です。</p>
-
-    <div class="grouplbl">提案・デモ（橋本さん向け）</div>
+    <p class="sub">事業提案と、オンラインアカデミーの画面イメージです。下のカードからご覧ください。</p>
     <div class="cards">
       <a class="card" href="deck.html">
-        <div class="n">01 / 提案</div><h2>事業提案書</h2>
-        <p>ビジョン・商品設計・コンテンツ計画・スケジュール。</p><span class="go">開く →</span>
+        <div class="n">01 / 提案</div>
+        <h2>事業提案書</h2>
+        <p>ビジョン・商品設計・コンテンツ計画・スケジュール。</p>
+        <span class="go">開く →</span>
       </a>
       <a class="card" href="academy.html">
-        <div class="n">02 / デモ</div><h2>アカデミー画面イメージ</h2>
-        <p>会員が見る学習画面のインタラクティブなモック。</p><span class="go">開く →</span>
+        <div class="n">02 / デモ</div>
+        <h2>アカデミー画面イメージ</h2>
+        <p>会員が見る学習画面のインタラクティブなモック。</p>
+        <span class="go">開く →</span>
       </a>
     </div>
-
-    <div class="grouplbl">内部分析（Sean・Chei 用）</div>
-    <div class="cards">
-      <a class="card" href="pricing.html">
-        <div class="n">03 / 分析</div><h2>価格設計の分析</h2>
-        <p>相場・心理・事例から、講座/月額/対面の価格を根拠づけ。</p><span class="go">開く →</span>
-      </a>
-      <a class="card" href="brand.html">
-        <div class="n">04 / 分析</div><h2>ブランド名の方向性</h2>
-        <p>パター事業への拡張を見据えた命名戦略＋実例。</p><span class="go">開く →</span>
-      </a>
-    </div>
-
-    <p class="foot">CONFIDENTIAL ・ 提案ドラフト ・ 数値はすべて検証前のイメージです<br>※レッスン名・構成・価格はサンプル。実際の内容は橋本さんが設計します。</p>
+    <p class="foot">CONFIDENTIAL ・ 提案ドラフト ・ 数値はすべて検証前のイメージです<br>※レッスン名・構成はサンプル。実際の内容は橋本さんが設計します。</p>
   </div>
 </body>
 </html>
