@@ -200,12 +200,12 @@
           <div class="hc">
             <div class="k">パッティング・マスタープログラム</div>
             <h1>転がりを、科学する。</h1>
-            <p>橋本真和が設計する、全12週間の体系的プログラム。技術・距離感・読み・メンタルを、一歩ずつ自分のものに。</p>
+            <p>橋本真和が設計する、全30本のプログラム。「1ヶ月でパターが変わる」。技術・距離感・読み・メンタルを、一歩ずつ自分のものに。</p>
             <button class="play" onclick="resume()">▶ 続きから再生（Week 2)</button>
             <div class="stats">
-              <div><div class="n">12</div><div class="l">週間</div></div>
-              <div><div class="n" id="stTotal">60</div><div class="l">レッスン</div></div>
-              <div><div class="n">約8時間</div><div class="l">総尺</div></div>
+              <div><div class="n">30<small style="font-size:14px">＋特典</small></div><div class="l">動画</div></div>
+              <div><div class="n">1ヶ月</div><div class="l">で変わる</div></div>
+              <div><div class="n">約4時間</div><div class="l">総尺</div></div>
               <div><div class="n" id="stPct">0%</div><div class="l">達成</div></div>
             </div>
           </div>
@@ -221,7 +221,7 @@
             <div class="pt">買い切り ・ 唯一の購入方法</div>
             <h4>全コンテンツ講座</h4>
             <div class="pp">¥98,000 <small>一括</small></div>
-            <ul><li>全12週・全レッスンが見放題</li><li>何度でも、自分のペースで</li><li>ここを終えた人だけが、次へ</li></ul>
+            <ul><li>全30本＋ボーナスが見放題</li><li>練習器具プレゼント＋テンポアプリ付き</li><li>ここを終えた人だけが、次へ</li></ul>
           </div>
           <div class="pc locked">
             <div class="pt">月額コーチング ・ 審査制</div>
@@ -275,18 +275,24 @@
 
 <script>
   // ---- Sample data (illustrative only; real curriculum designed by Hashimoto) ----
-  const THEMES=["グリップと構え","ストロークの軌道","距離感の基礎","振り幅と距離","ロングパット","スピードとライン",
-    "傾斜の読み方","芝目と速さ","プレッシャー対策","1.5mの精度","本番想定ドリル","総仕上げ"];
-  const PILLAR=["技術","技術","距離感","距離感","距離感","読み","読み","読み","メンタル","メンタル","メンタル","技術"];
-  const SUFFIX=["基本の解説","ドリル①","よくある間違い","実践ドリル","今週のまとめ"];
-  const DUR=["10:24","3:48","6:12","4:30","2:05"];
-  const weeks=THEMES.map((t,i)=>({t,k:PILLAR[i],lessons:SUFFIX.map((s,j)=>({
-    title:`${t}：${s}`, dur:DUR[j], tag:j===1||j===3?"ドリル":j===4?"まとめ":"レッスン",
-    done:(i===0)||(i===1&&j<3)
+  // 30本＋ボーナス。「1ヶ月でパターが変わる」プログラム（4週 + 特典）。
+  const WK=[
+    {t:"基礎をつくる", k:"技術", n:8},
+    {t:"距離感を磨く", k:"距離感", n:8},
+    {t:"ラインを読む", k:"読み", n:7},
+    {t:"本番で決める", k:"メンタル・仕上げ", n:7},
+    {t:"ボーナス動画", k:"特典", n:4},
+  ];
+  const SUF=["導入","基本ドリル","ポイント解説","実践ドリル","チェック","応用","まとめ","補講"];
+  const DUR=["6:20","4:10","8:30","5:05","3:40","7:15","9:02","4:48"];
+  const weeks=WK.map((w,i)=>({t:w.t,k:w.k,lessons:Array.from({length:w.n},(_,j)=>({
+    title:`${w.t}：${SUF[j%SUF.length]}`,
+    dur:DUR[j%DUR.length],
+    tag: w.k==="特典"?"ボーナス":(j%3===1?"ドリル":(j===w.n-1?"まとめ":"レッスン")),
+    done: i===0 && j<3
   }))}));
   const TOTAL=weeks.reduce((a,w)=>a+w.lessons.length,0);
-  document.getElementById('stTotal').textContent=TOTAL;
-  let cur={w:1,l:0};
+  let cur={w:0,l:3};
 
   // ---- Sidebar ----
   const mods=document.getElementById('mods');
@@ -297,7 +303,7 @@
         <span class="mt">${w.t}</span><span class="chev">▶</span></div>
       <div class="lessons">${w.lessons.map((l,j)=>`
         <div class="lz ${l.done?'done':''}" data-w="${i}" data-l="${j}" onclick="openLesson(${i},${j})">
-          <span class="ck">${l.done?'✓':''}</span><span>${SUFFIX[j]}</span><span class="ld">${l.dur}</span></div>`).join('')}</div>`;
+          <span class="ck">${l.done?'✓':''}</span><span>${SUF[j%SUF.length]}</span><span class="ld">${l.dur}</span></div>`).join('')}</div>`;
     mods.appendChild(m);
   });
 
