@@ -6,34 +6,35 @@
 <meta name="robots" content="noindex,nofollow">
 <title>橋本真和 パッティングアカデミー</title>
 <style>
-  :root{--navy:#1c2e40;--cream:#f6f5f3;--champagne:#d5c6a0;--bronze:#5e4d35;
+  :root{--bg:#edecea;--navy:#222a46;--gold:#a98b3f;--ink:#0a0a0a;--soft:#4f575e;--line:#dcdad5;
     --sans:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans","Yu Gothic",sans-serif;
     --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,serif;
     --mono:ui-monospace,Menlo,Monaco,monospace;}
   *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;background:var(--navy);color:var(--cream);font-family:var(--sans);
+  body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--sans);
     display:flex;align-items:center;justify-content:center;padding:40px 24px;-webkit-font-smoothing:antialiased;
     font-feature-settings:"palt"}
   .wrap{max-width:760px;width:100%}
-  .k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne)}
+  .k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
   h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,6vw,46px);line-height:1.25;margin:16px 0 10px}
-  .sub{color:rgba(244,243,238,.72);margin:0 0 36px;font-size:16px;line-height:1.7;max-width:560px}
+  .sub{color:var(--soft);margin:0 0 36px;font-size:16px;line-height:1.7;max-width:560px}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:600px){.cards{grid-template-columns:1fr}}
-  a.card{display:block;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
-    border-radius:12px;padding:26px 26px 24px;color:var(--cream);transition:transform .15s,border-color .15s,background .15s}
-  a.card:hover{transform:translateY(-3px);border-color:var(--champagne);background:rgba(213,198,160,.08)}
-  a.card .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--champagne)}
+  a.card{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:26px 26px 24px;color:var(--ink);transition:transform .15s,border-color .15s,box-shadow .15s}
+  a.card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 14px 30px -18px rgba(0,0,0,.3)}
+  a.card .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--gold)}
   a.card h2{font-family:var(--serif);font-weight:400;font-size:22px;margin:12px 0 6px}
-  a.card p{margin:0;font-size:13.5px;color:rgba(244,243,238,.66);line-height:1.6}
+  a.card p{margin:0;font-size:13.5px;color:var(--soft);line-height:1.6}
   a.card .go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--champagne)}
-  .foot{margin-top:32px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:rgba(244,243,238,.4);line-height:1.8}
+    text-transform:uppercase;color:var(--gold)}
+  .foot{margin-top:32px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--soft);line-height:1.8}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <svg viewBox="0 0 1080 220" width="320" style="max-width:78%;height:auto;display:block;margin-bottom:22px" aria-label="HPA">
+    <svg viewBox="0 0 1080 220" width="340" style="max-width:80%;height:auto;display:block;margin-bottom:24px" aria-label="HPA">
+      <rect x="0" y="0" width="1080" height="220" rx="34" fill="#222a46"/>
       <rect x="44" y="34" width="592" height="152" rx="76" fill="#ffffff"/>
       <line x1="104" y1="110" x2="556" y2="110" stroke="#a98b3f" stroke-width="7" stroke-linecap="round"/>
       <circle cx="104" cy="110" r="13" fill="#a98b3f"/>
@@ -43,7 +44,7 @@
     </svg>
     <div class="k">Preserve Golf Japan</div>
     <h1>橋本真和<br>パッティングアカデミー</h1>
-    <p class="sub">事業提案と、オンラインアカデミーの画面イメージです。下のカードからご覧ください。</p>
+    <p class="sub">事業提案と、オンラインアカデミーの画面イメージ。下のカードから。</p>
     <div class="cards">
       <a class="card" href="deck.html">
         <div class="n">01 / 提案</div>
@@ -58,7 +59,7 @@
         <span class="go">開く →</span>
       </a>
     </div>
-    <p class="foot">CONFIDENTIAL ・ 提案ドラフト ・ 数値はすべて検証前のイメージです<br>※レッスン名・構成はサンプル。実際の内容は橋本さんが設計します。</p>
+    <p class="foot">CONFIDENTIAL ・ 提案ドラフト ・ 価格は仮。<br>※レッスン名・構成はサンプル。実際の内容は橋本さんが設計。</p>
   </div>
 </body>
 </html>
